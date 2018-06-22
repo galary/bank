@@ -1,0 +1,51 @@
+﻿{
+  "type": "hotCards",
+  "title": "今日推荐",
+  "isNonProfit": true,
+  "links": [
+  {
+    "name": "招商银行",
+    "url": "../../static/image/zhongguo.jpg",
+    "discounts": "送899拉杆箱"
+  },
+  {
+    "name": "招商银行",
+    "url": "../../static/image/zhongguo.jpg",
+    "discounts": "送899拉杆箱"
+  },
+  {
+    "name": "招商银行",
+    "url": "../../static/image/zhongguo.jpg",
+    "discounts": "送899拉杆箱"
+  },
+  {
+    "name": "招商银行",
+    "url": "../../static/image/zhongguo.jpg",
+    "discounts": "送899拉杆箱"
+  },
+  {
+    "name": "招商银行",
+    "url": "../../static/image/zhongguo.jpg",
+    "discounts": "送899拉杆箱"
+  },
+  {
+    "name": "招商银行",
+    "url": "../../static/image/zhongguo.jpg",
+    "discounts": "送899拉杆箱"
+  },
+  {
+    "name": "招商银行",
+    "url": "../../static/image/zhongguo.jpg",
+    "discounts": "送899拉杆箱"
+  },
+  {
+    "name": "招商银行",
+    "url": "../../static/image/zhongguo.jpg",
+    "discounts": "送899拉杆箱"
+  },
+  {
+    "name": "招商银行",
+    "url": "../../static/image/zhongguo.jpg",
+    "discounts": "送899拉杆箱"
+  }]
+}
