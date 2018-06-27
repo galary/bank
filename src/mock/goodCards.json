@@ -1,6 +1,7 @@
-﻿{
+{
   "type": "hotCards",
   "title": "今日推荐",
+  "isNonProfit": true,
   "links": [
   {
     "name": "招商银行",
@@ -55,26 +56,6 @@
       "discount1": "芯片设计、交易更安全",
       "discount": "送车你信不信"
     }],
-    "url": "./static/image/zhongguo.jpg",
-    "discounts": "送899拉杆箱"
-  },
-  {
-    "name": "建设银行",
-    "url": "./static/image/zhongguo.jpg",
-    "discounts": "送899拉杆箱"
-  },
-  {
-    "name": "光大银行",
-    "url": "./static/image/zhongguo.jpg",
-    "discounts": "送899拉杆箱"
-  },
-  {
-    "name": "中信银行",
-    "url": "./static/image/zhongguo.jpg",
-    "discounts": "送899拉杆箱"
-  },
-  {
-    "name": "浦发银行",
     "url": "./static/image/zhongguo.jpg",
     "discounts": "送899拉杆箱"
   }]

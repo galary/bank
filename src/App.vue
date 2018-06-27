@@ -1,9 +1,12 @@
 <template>
   <div id="app">
     <keep-alive>
-      <router-view></router-view>
+      <!--使用keep-alive会将页面缓存-->
+      <router-view v-if="$route.meta.keepAlive"></router-view>
     </keep-alive>
-    <tab></tab>
+    <router-view v-if="!$route.meta.keepAlive"></router-view>
+    <router-view name="tab"></router-view>
+    <!-- <tab class='tobbar'></tab> -->
   </div>
 </template>
 <script>
@@ -27,7 +30,9 @@ export default {
   padding: 0;
 }
 
-body {
+#app {
+  width: 100%;
+  height: 100%;
   background-color: #f1f1f1;
 }
 

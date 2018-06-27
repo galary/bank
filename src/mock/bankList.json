@@ -1,0 +1,426 @@
+{
+  "type": "hotCards",
+  "title": "全部银行",
+  "isNonProfit": true,
+  "links": [
+  {
+    "name": "兴业银行",
+    "icon": "#icon-yinhanglogo_xingyeyinhang",
+    "cards": [
+    {
+      "cardName": "平安曼联红魔白金卡",
+      "discount1": "办套卡享受年费优免",
+      "discount": "任选球星定制卡面"
+    },
+    {
+      "cardName": "平安曼联红魔白金卡",
+      "discount1": "办套卡享受年费优免",
+      "discount": "任选球星定制卡面"
+    },
+    {
+      "cardName": "平安曼联红魔白金卡",
+      "discount1": "办套卡享受年费优免",
+      "discount": "任选球星定制卡面"
+    },
+    {
+      "cardName": "平安曼联红魔白金卡",
+      "discount1": "办套卡享受年费优免",
+      "discount": "任选球星定制卡面"
+    }],
+    "url": "./static/image/zhongguo.jpg",
+    "discounts": "送899拉杆箱"
+
+  },
+  {
+    "name": "工商银行",
+    "icon": "#icon-gongshangyibu",
+    "cards": [
+    {
+      "cardName": "平安曼联红魔白金卡",
+      "discount1": "办套卡享受年费优免",
+      "discount": "任选球星定制卡面"
+    },
+    {
+      "cardName": "平安曼联红魔白金卡",
+      "discount1": "办套卡享受年费优免",
+      "discount": "任选球星定制卡面"
+    },
+    {
+      "cardName": "平安曼联红魔白金卡",
+      "discount1": "办套卡享受年费优免",
+      "discount": "任选球星定制卡面"
+    },
+    {
+      "cardName": "平安曼联红魔白金卡",
+      "discount1": "办套卡享受年费优免",
+      "discount": "任选球星定制卡面"
+    }],
+    "url": "./static/image/zhongguo.jpg",
+    "discounts": "送899拉杆箱"
+
+  },
+  {
+    "name": "交通银行",
+    "icon": "#icon-jiaotongyinhanglogo",
+    "cards": [
+    {
+      "cardName": "平安曼联红魔白金卡",
+      "discount1": "办套卡享受年费优免",
+      "discount": "任选球星定制卡面"
+    },
+    {
+      "cardName": "平安曼联红魔白金卡",
+      "discount1": "办套卡享受年费优免",
+      "discount": "任选球星定制卡面"
+    },
+    {
+      "cardName": "平安曼联红魔白金卡",
+      "discount1": "办套卡享受年费优免",
+      "discount": "任选球星定制卡面"
+    },
+    {
+      "cardName": "平安曼联红魔白金卡",
+      "discount1": "办套卡享受年费优免",
+      "discount": "任选球星定制卡面"
+    }],
+    "url": "./static/image/zhongguo.jpg",
+    "discounts": "送899拉杆箱"
+
+  },
+  {
+    "name": "浦发银行",
+    "icon": "#icon-yinhanglogo_pufayinhang",
+    "cards": [
+    {
+      "cardName": "平安曼联红魔白金卡",
+      "discount1": "办套卡享受年费优免",
+      "discount": "任选球星定制卡面"
+    },
+    {
+      "cardName": "平安曼联红魔白金卡",
+      "discount1": "办套卡享受年费优免",
+      "discount": "任选球星定制卡面"
+    },
+    {
+      "cardName": "平安曼联红魔白金卡",
+      "discount1": "办套卡享受年费优免",
+      "discount": "任选球星定制卡面"
+    },
+    {
+      "cardName": "平安曼联红魔白金卡",
+      "discount1": "办套卡享受年费优免",
+      "discount": "任选球星定制卡面"
+    }],
+    "url": "./static/image/zhongguo.jpg",
+    "discounts": "送899拉杆箱"
+
+  },
+  {
+    "name": "北京银行",
+    "icon": "#icon-beijingyinhanglogo",
+    "cards": [
+    {
+      "cardName": "平安曼联红魔白金卡",
+      "discount1": "办套卡享受年费优免",
+      "discount": "任选球星定制卡面"
+    },
+    {
+      "cardName": "平安曼联红魔白金卡",
+      "discount1": "办套卡享受年费优免",
+      "discount": "任选球星定制卡面"
+    },
+    {
+      "cardName": "平安曼联红魔白金卡",
+      "discount1": "办套卡享受年费优免",
+      "discount": "任选球星定制卡面"
+    },
+    {
+      "cardName": "平安曼联红魔白金卡",
+      "discount1": "办套卡享受年费优免",
+      "discount": "任选球星定制卡面"
+    }],
+    "url": "./static/image/zhongguo.jpg",
+    "discounts": "送899拉杆箱"
+
+  },
+  {
+    "name": "上海银行",
+    "icon": "#icon-shanghaiyinhanglogo",
+    "cards": [
+    {
+      "cardName": "平安曼联红魔白金卡",
+      "discount1": "办套卡享受年费优免",
+      "discount": "任选球星定制卡面"
+    },
+    {
+      "cardName": "平安曼联红魔白金卡",
+      "discount1": "办套卡享受年费优免",
+      "discount": "任选球星定制卡面"
+    },
+    {
+      "cardName": "平安曼联红魔白金卡",
+      "discount1": "办套卡享受年费优免",
+      "discount": "任选球星定制卡面"
+    },
+    {
+      "cardName": "平安曼联红魔白金卡",
+      "discount1": "办套卡享受年费优免",
+      "discount": "任选球星定制卡面"
+    }],
+    "url": "./static/image/zhongguo.jpg",
+    "discounts": "送899拉杆箱"
+
+  },
+  {
+    "name": "兴业银行",
+    "icon": "#icon-xingyeyinhanglogo",
+    "cards": [
+    {
+      "cardName": "平安曼联红魔白金卡",
+      "discount1": "办套卡享受年费优免",
+      "discount": "任选球星定制卡面"
+    },
+    {
+      "cardName": "平安曼联红魔白金卡",
+      "discount1": "办套卡享受年费优免",
+      "discount": "任选球星定制卡面"
+    },
+    {
+      "cardName": "平安曼联红魔白金卡",
+      "discount1": "办套卡享受年费优免",
+      "discount": "任选球星定制卡面"
+    },
+    {
+      "cardName": "平安曼联红魔白金卡",
+      "discount1": "办套卡享受年费优免",
+      "discount": "任选球星定制卡面"
+    }],
+    "url": "./static/image/zhongguo.jpg",
+    "discounts": "送899拉杆箱"
+
+  },
+  {
+    "name": "浙商银行",
+    "icon": "#icon-zheshangyinhanglogo",
+    "cards": [
+    {
+      "cardName": "平安曼联红魔白金卡",
+      "discount1": "办套卡享受年费优免",
+      "discount": "任选球星定制卡面"
+    },
+    {
+      "cardName": "平安曼联红魔白金卡",
+      "discount1": "办套卡享受年费优免",
+      "discount": "任选球星定制卡面"
+    },
+    {
+      "cardName": "平安曼联红魔白金卡",
+      "discount1": "办套卡享受年费优免",
+      "discount": "任选球星定制卡面"
+    },
+    {
+      "cardName": "平安曼联红魔白金卡",
+      "discount1": "办套卡享受年费优免",
+      "discount": "任选球星定制卡面"
+    }],
+    "url": "./static/image/zhongguo.jpg",
+    "discounts": "送899拉杆箱"
+
+  },
+  {
+    "name": "中国银行",
+    "icon": "#icon-zhongguoyinhanglogo",
+    "cards": [
+    {
+      "cardName": "平安曼联红魔白金卡",
+      "discount1": "办套卡享受年费优免",
+      "discount": "任选球星定制卡面"
+    },
+    {
+      "cardName": "平安曼联红魔白金卡",
+      "discount1": "办套卡享受年费优免",
+      "discount": "任选球星定制卡面"
+    },
+    {
+      "cardName": "平安曼联红魔白金卡",
+      "discount1": "办套卡享受年费优免",
+      "discount": "任选球星定制卡面"
+    },
+    {
+      "cardName": "平安曼联红魔白金卡",
+      "discount1": "办套卡享受年费优免",
+      "discount": "任选球星定制卡面"
+    }],
+    "url": "./static/image/zhongguo.jpg",
+    "discounts": "送899拉杆箱"
+
+  },
+  {
+    "name": "广发银行",
+    "icon": "#icon-guangfayinhanglogo",
+    "cards": [
+    {
+      "cardName": "平安曼联红魔白金卡",
+      "discount1": "办套卡享受年费优免",
+      "discount": "任选球星定制卡面"
+    },
+    {
+      "cardName": "平安曼联红魔白金卡",
+      "discount1": "办套卡享受年费优免",
+      "discount": "任选球星定制卡面"
+    },
+    {
+      "cardName": "平安曼联红魔白金卡",
+      "discount1": "办套卡享受年费优免",
+      "discount": "任选球星定制卡面"
+    },
+    {
+      "cardName": "平安曼联红魔白金卡",
+      "discount1": "办套卡享受年费优免",
+      "discount": "任选球星定制卡面"
+    }],
+    "url": "./static/image/zhongguo.jpg",
+    "discounts": "送899拉杆箱"
+
+  },
+  {
+    "name": "农业银行",
+    "icon": "#icon-nongyeyinhanglogo",
+    "cards": [
+    {
+      "cardName": "平安曼联红魔白金卡",
+      "discount1": "办套卡享受年费优免",
+      "discount": "任选球星定制卡面"
+    },
+    {
+      "cardName": "平安曼联红魔白金卡",
+      "discount1": "办套卡享受年费优免",
+      "discount": "任选球星定制卡面"
+    },
+    {
+      "cardName": "平安曼联红魔白金卡",
+      "discount1": "办套卡享受年费优免",
+      "discount": "任选球星定制卡面"
+    },
+    {
+      "cardName": "平安曼联红魔白金卡",
+      "discount1": "办套卡享受年费优免",
+      "discount": "任选球星定制卡面"
+    }],
+    "url": "./static/image/zhongguo.jpg",
+    "discounts": "送899拉杆箱"
+
+  },
+  {
+    "name": "招商银行",
+    "icon": "#icon-zhaoshangyinhanglogo",
+    "cards": [
+    {
+      "cardName": "平安曼联红魔白金卡",
+      "discount1": "办套卡享受年费优免",
+      "discount": "任选球星定制卡面"
+    },
+    {
+      "cardName": "平安曼联红魔白金卡",
+      "discount1": "办套卡享受年费优免",
+      "discount": "任选球星定制卡面"
+    },
+    {
+      "cardName": "平安曼联红魔白金卡",
+      "discount1": "办套卡享受年费优免",
+      "discount": "任选球星定制卡面"
+    },
+    {
+      "cardName": "平安曼联红魔白金卡",
+      "discount1": "办套卡享受年费优免",
+      "discount": "任选球星定制卡面"
+    }],
+    "url": "./static/image/zhongguo.jpg",
+    "discounts": "送899拉杆箱"
+
+  },
+  {
+    "name": "农业银行",
+    "icon": "#icon-nongyeyinhanglogo",
+    "cards": [
+    {
+      "cardName": "平安曼联红魔白金卡",
+      "discount1": "办套卡享受年费优免",
+      "discount": "任选球星定制卡面"
+    },
+    {
+      "cardName": "平安曼联红魔白金卡",
+      "discount1": "办套卡享受年费优免",
+      "discount": "任选球星定制卡面"
+    },
+    {
+      "cardName": "平安曼联红魔白金卡",
+      "discount1": "办套卡享受年费优免",
+      "discount": "任选球星定制卡面"
+    },
+    {
+      "cardName": "平安曼联红魔白金卡",
+      "discount1": "办套卡享受年费优免",
+      "discount": "任选球星定制卡面"
+    }],
+    "url": "./static/image/zhongguo.jpg",
+    "discounts": "送899拉杆箱"
+
+  },
+  {
+    "name": "网商银行",
+    "icon": "#icon-wangshangyinhanglogoxx",
+    "cards": [
+    {
+      "cardName": "平安曼联红魔白金卡",
+      "discount1": "办套卡享受年费优免",
+      "discount": "任选球星定制卡面"
+    },
+    {
+      "cardName": "平安曼联红魔白金卡",
+      "discount1": "办套卡享受年费优免",
+      "discount": "任选球星定制卡面"
+    },
+    {
+      "cardName": "平安曼联红魔白金卡",
+      "discount1": "办套卡享受年费优免",
+      "discount": "任选球星定制卡面"
+    },
+    {
+      "cardName": "平安曼联红魔白金卡",
+      "discount1": "办套卡享受年费优免",
+      "discount": "任选球星定制卡面"
+    }],
+    "url": "./static/image/zhongguo.jpg",
+    "discounts": "送899拉杆箱"
+
+  },
+  {
+    "name": "兴业银行",
+    "icon": "#icon-yinhanglogo_xingyeyinhang",
+    "cards": [
+    {
+      "cardName": "平安曼联红魔白金卡",
+      "discount1": "办套卡享受年费优免",
+      "discount": "任选球星定制卡面"
+    },
+    {
+      "cardName": "平安曼联红魔白金卡",
+      "discount1": "办套卡享受年费优免",
+      "discount": "任选球星定制卡面"
+    },
+    {
+      "cardName": "平安曼联红魔白金卡",
+      "discount1": "办套卡享受年费优免",
+      "discount": "任选球星定制卡面"
+    },
+    {
+      "cardName": "平安曼联红魔白金卡",
+      "discount1": "办套卡享受年费优免",
+      "discount": "任选球星定制卡面"
+    }],
+    "url": "./static/image/zhongguo.jpg",
+    "discounts": "送899拉杆箱"
+
+  }]
+}

@@ -1,91 +1,65 @@
 <template>
   <div class="tab">
-    <router-link tag="div" class="tab-item" to="/home">
-      <div class="tab-link">
-        <div class="ic_container"><i class="iconfont ic home">&#xe6a6;</i></div>
-        <span>首页</span>
-      </div>
-    </router-link>
-    <router-link tag="div" class="tab-item" to="/find">
-      <div class="tab-link">
-        <div class="ic_container"><i class="iconfont ic find">&#xe669;</i></div>
-        <span>发现</span>
-      </div>
-    </router-link>
-    <router-link tag="div" class="tab-item" to="/mine">
-      <div class="tab-link">
-        <div class="ic_container"><i class="iconfont ic my">&#xe705;</i></div>
-        <span>我的</span>
-      </div>
-    </router-link>
+    <mt-tabbar v-model="selected" fixed>
+      <mt-tab-item id="home">
+        <i class="tabicon icon iconfont icon-wxbzhuye" slot="icon"></i> 首页
+      </mt-tab-item>
+      <mt-tab-item id="find">
+        <i class="tabicon icon iconfont icon-compass" slot="icon"></i> 发现
+      </mt-tab-item>
+      <mt-tab-item id="mine">
+        <i class="tabicon icon iconfont icon-account" slot="icon"></i> 我的
+      </mt-tab-item>
+    </mt-tabbar>
   </div>
 </template>
 <script>
-export default {}
+export default {
+  data() {
+    return {
+      selected: ''
+    }
+  },
+  watch: {
+    // this.$.router.push({name: ''})
+    // 固定的书写 ""双引号里面是要监听的数据 handler是处理数据改变的函数 deep是否深度监听
+    "selected": {
+      handler(val, oldval) { //多看文档 handler
+        if (this.selected == "home") {
+          this.$router.push('/')
+        } else if (this.selected == "find") {
+          this.$router.push('/find')
+        } else if (this.selected == 'mine') {
+          this.$router.push('/mine')
+        }
+      }
+      // deep:true//对象内部的属性监听，也叫深度监听
+    }
+  },
+  created() {
+    this.selected = this.$route.name;
+    console.log(this.selected)
+  }
+}
 
 </script>
-<style>
+<style lang="less" scoped>
 .tab {
-  z-index: 1000;
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  height: 48px;
-  line-height: 48px;
-  display: flex;
-  font-size: 13px;
-  background-color: #F5F5F5;
-  box-shadow: inset 0px 1px 1px -1px #A7A7AB;
-}
-
-.tab .tab-item {
-  flex: 1;
-  text-align: center;
-}
-
-.tab-link {
-  text-align: center;
-  height: 100%;
-}
-
-.tab-link .ic_container {
-  height: 20px;
-  line-height: 20px;
-  padding-top: 9px;
-}
-
-.ic {
-  display: inline-block;
-  font-size: 22px;
-}
-
-.tab .tab-item span {
-  display: block;
-  height: 18px;
-  line-height: 16px;
-}
-
-.home {
-  width: 28px;
-}
-
-.find {
-  font-size: 25px;
-  width: 26px;
-}
-
-.message {
-  font-size: 21px;
-  width: 20px;
-}
-
-.my {
-  font-size: 24px;
-  width: 28px;
-}
-
-.router-link-active .tab-link {
-  color: #007AFF;
+  margin-top: 10px;
+  .mint-tabbar {
+    border-top: 1px solid #f1f1f1;
+    background: #fff;
+    height: 3.1rem;
+    padding-top: -0.4rem;
+    .mint-tab-item.is-selected {
+      color: #FE4070;
+      background: #fff;
+      text-decoration: none;
+    }
+  }
+  .tabicon {
+    font-size: 25px;
+  }
 }
 
 </style>
