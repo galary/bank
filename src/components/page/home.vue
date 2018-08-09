@@ -1,20 +1,19 @@
 <template>
   <div class="homeModule">
     <div class="search">
-      <mt-search v-model="searchValue">
-        <mt-cell v-for="(item,index) in result" :title="item.title" :value="item.value" style="z-index:100" @click="changeInout(item.value)" :key='index'>
-        </mt-cell>
+      <mt-search v-model="searchValue" @keyup.native.enter="search(searchValue)">
       </mt-search>
       <!-- <mt-search v-model="searchValue"></mt-search> -->
     </div>
     <div class="swiperView">
+      <!-- <mt-button type="danger" @click.native="search1(searchValue)">danger</mt-button> -->
       <div class="hotCardTitle">今日推荐</div>
       <swiper :options="swiperOption" class="swiper-box">
         <swiper-slide class="swiper-item" v-for="(item,index) in hotCards" :key='index'>
-          <div class="cardlist">
-            <img :src="item.url" alt="">
-            <p class="hotcardName">{{item.name}}{{index}}</p>
-            <p class="discounts">{{item.discounts}}</p>
+          <div class="cardlist " @click="showCards(item)">
+            <img :src='`${baseUrl}${item.Attachments[0].Url}`' alt="">
+            <p class="hotcardName">{{item.Name}}</p>
+            <p class="discounts">{{item.Type}}</p>
           </div>
         </swiper-slide>
         <div class="swiper-pagination" slot="pagination"></div>
@@ -28,11 +27,9 @@
         </div>
         <div class="bankOutView">
           <div class="hotbankList">
-            <div class="bankView" v-for="(item,index) in bankList" @click='showThisBank(item.name,item.icon)'>
-              <svg class="icon" aria-hidden="true">
-                <use :xlink:href="`${item.icon}`"></use>
-              </svg>
-              <div class="name">{{item.name}}</div>
+            <div class="bankView" v-for="(item,index) in bankList" @click='showThisBank(item)'>
+              <img class="bankIcon" :src='`${baseUrl}${item.Url}`' alt="">
+              <div class="name">{{item.Name}}</div>
             </div>
           </div>
         </div>
@@ -47,15 +44,17 @@
 import hotCards from "../../mock/hotCards.json";
 import bankList from "../../mock/bankList.json";
 import goodCards from "./goodCards.vue"
+import { Toast } from 'mint-ui';
 export default {
   data() {
     return {
+      baseUrl: 'http://api.getcard.cn',
       result: [{ title: "招商", value: 'bbb' }, { title: "招商", value: 'aaa' }, { title: "招商", value: 'cccc' }],
       searchValue: '',
       showMore: true,
       hiddenMore: false,
       hotCards: [],
-      bankList: [],
+      bankList: '',
       swiperOption: {
         slidesPerView: 3,
         slidesPerGroup: 3,
@@ -72,20 +71,108 @@ export default {
     goodCards
   },
   methods: {
+    search(val) {
+      let vm = this;
+      var dataNum = {
+        'pageNo': 0,
+        'pageSize': 100,
+        'Para': val,
+      }
+      console.log(dataNum)
+      this.$http.post(`${this.baseUrl}/api/CreditCard/GetCreditCardByBankId`, vm.$qs.stringify(dataNum))
+        .then(function(res) {
+          if (res.data.Success == true) {
+            let item = res.data.Data;
+            if (item && item.length != 0 || item != '') {
+              item.map((x, index) => {
+                vm.$router.push({
+                  name: 'showAllCards',
+                  params: {
+                    title: x.Name,
+                    BankId: "",
+                    Para: val
+                  }
+                })
+              })
+            } else {
+              Toast({
+                message: "未找到匹配信息",
+                position: 'middle',
+                duration: 3000
+              });
+            }
+          } else {
+            Toast({
+              message: "搜索失败",
+              position: 'middle',
+              duration: 2000
+            });
+          }
+        })
+        .catch(function(error) {
+          console.log(error);
+        });
+    },
+    showBankCards(item) {
+
+    },
+    showCards(index) {
+      this.$router.push({
+        name: 'applyCard',
+        params: {
+          url: index.ApplyAddress,
+          Name: index.Name
+        }
+      })
+    },
+    //推荐银行
+    showHotBank() {
+      let vm = this;
+      var dataNum = {
+        'pageNo': 0,
+        'pageSize': 10
+      }
+
+      this.$http.post(`${this.baseUrl}/api/Bank/GetRecommondBankList`, vm.$qs.stringify(dataNum))
+        .then(function(res) {
+          vm.bankList = res.data.Data;
+          // console.log(res.data);
+        })
+        .catch(function(error) {
+          console.log(error);
+        });
+    },
+    getHotCards() {
+      let vm = this;
+      var dataNum = {
+        'pageNo': 0,
+        'pageSize': 10
+      }
+      this.$http.post(`${this.baseUrl}/api/CreditCard/GetRecommondCreditCard`, vm.$qs.stringify(dataNum))
+        .then(function(res) {
+          vm.hotCards = res.data.Data;
+          // console.log(res.data);
+        })
+        .catch(function(error) {
+          console.log(error);
+        });
+    },
     showAllCards() {
       this.$router.push({
         name: 'showAllCards',
         params: {
-          title: "全部信用卡"
+          title: "全部信用卡",
+          BankId: ''
         }
       })
     },
-    showThisBank(name, icon) {
+    showThisBank(item) {
+      // console.log(item)
       this.$router.push({
         name: 'showAllCards',
         params: {
-          title: name,
-          icon: icon
+          title: item.Name,
+          BankId: item.Guid
         }
       })
     },
@@ -95,7 +182,7 @@ export default {
     showMoreChange: function() {
       this.showMore = false;
       this.hiddenMore = true;
-      console.log(this.$refs.hotBank)
+      // console.log(this.$refs.hotBank)
       this.$refs.hotBank.style.height = "auto";
     },
     hiddenMoreChange: function() {
@@ -104,20 +191,27 @@ export default {
       this.$refs.hotBank.style.height = "230px";
     }
   },
+  created() {
+    // this.getHotCards();
+    // this.showHotBank();
+  },
   mounted() {
-    this.hotCards = hotCards.links;
-    this.bankList = bankList.links;
-    if (this.hotCards.length <= 8) {
-      this.showMore = false;
-      this.hiddenMore = false;
-      this.$refs.hotBank.style.height = "auto";
-    }
+    this.$nextTick(() => {
+      this.getHotCards();
+      this.showHotBank();
+      // console.log(this.bankList)
+      if (this.bankList.length <= 8 && this.bankList.length != 0) {
+        this.showMore = false;
+        this.hiddenMore = false;
+        this.$refs.hotBank.style.height = "auto";
+      }
+    })
   }
 };
 
 </script>
 <style lang="less" scoped>
-.icon {
+.bankIcon {
   width: 3em;
   margin-top: 5px;
   height: 3em;
@@ -211,7 +305,7 @@ export default {
     height: 120px;
     margin: 0 auto;
     .hotcardName {
-      font-size: 14px;
+      font-size: 10px;
       color: #666;
     }
     .discounts {

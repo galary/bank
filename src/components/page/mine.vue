@@ -2,80 +2,93 @@
   <div id="my">
     <div class="mine">
       <div class="my_header">
-        <div class="user_img" @click="selectLogin()"><img src="../../../static/image/shana.png"></div>
+        <div class="user_img" @click="selectLogin()"><img :src="imgUrl"></div>
         <div class="des" @click="selectPersonalpage()">
-          <p class="user_name">刘灿</p>
-          <span class="user_work">大家好</span>
+          <div class="user_name">{{Name}}</div>
+          <div class="rightFlag"><i class="icon iconfont icon-arrowright"></i></div>
         </div>
       </div>
-      <div class="rightFlag"><i class="icon iconfont icon-arrowright"></i></div>
     </div>
     <div class="my_items">
       <div class="mineModule">
-        <mt-cell is-link>
-          <div slot='title' class="myTitle" style="">
-            <svg class="icon" aria-hidden="true" slot='icon'>
-              <use xlink:href="#icon-yinhangqia"></use>
-            </svg>
-            <div class="titletext">我的银行卡</div>
-          </div>
-        </mt-cell>
+        <div @click='goNull'>
+          <mt-cell is-link>
+            <div slot='title' class="myTitle" style="">
+              <svg class="icon" aria-hidden="true" slot='icon'>
+                <use xlink:href="#icon-yinhangqia"></use>
+              </svg>
+              <div class="titletext">我的银行卡</div>
+            </div>
+          </mt-cell>
+        </div>
         <!-- <div class="lineStyle"></div> -->
-        <mt-cell is-link>
-          <div slot='title' class="myTitle" style="">
-            <svg class="icon" aria-hidden="true" slot='icon'>
-              <use xlink:href="#icon-daikuan-xuanzhong"></use>
-            </svg>
-            <div class="titletext">我的钱包</div>
-          </div>
-        </mt-cell>
+        <div @click='goNull'>
+          <mt-cell is-link>
+            <div slot='title' class="myTitle" style="">
+              <svg class="icon" aria-hidden="true" slot='icon'>
+                <use xlink:href="#icon-daikuan-xuanzhong"></use>
+              </svg>
+              <div class="titletext">我的钱包</div>
+            </div>
+          </mt-cell>
+        </div>
       </div>
       <div class="mineModule">
-        <mt-cell is-link>
-          <div slot='title' class="myTitle" style="">
-            <svg class="icon" aria-hidden="true" slot='icon'>
-              <use xlink:href="#icon-Group"></use>
-            </svg>
-            <div class="titletext">办卡进度查询</div>
-          </div>
-        </mt-cell>
+        <div @click='goNull'>
+          <mt-cell is-link>
+            <div slot='title' class="myTitle" style="">
+              <svg class="icon" aria-hidden="true" slot='icon'>
+                <use xlink:href="#icon-Group"></use>
+              </svg>
+              <div class="titletext">办卡进度查询</div>
+            </div>
+          </mt-cell>
+        </div>
         <!-- <div class="lineStyle"></div> -->
-        <mt-cell is-link>
-          <div slot='title' class="myTitle" style="">
-            <svg class="icon" aria-hidden="true" slot='icon'>
-              <use xlink:href="#icon-zhengfu"></use>
-            </svg>
-            <div class="titletext">银行服务大厅</div>
-          </div>
-        </mt-cell>
+        <div @click='goNull'>
+          <mt-cell is-link>
+            <div slot='title' class="myTitle" style="">
+              <svg class="icon" aria-hidden="true" slot='icon'>
+                <use xlink:href="#icon-zhengfu"></use>
+              </svg>
+              <div class="titletext">银行服务大厅</div>
+            </div>
+          </mt-cell>
+        </div>
         <!-- <div class="lineStyle"></div> -->
-        <mt-cell is-link>
-          <div slot='title' class="myTitle" style="">
-            <svg class="icon" aria-hidden="true" slot='icon'>
-              <use xlink:href="#icon-yinhangqia"></use>
-            </svg>
-            <div class="titletext">信用卡提额</div>
-          </div>
-        </mt-cell>
+        <div @click='goNull'>
+          <mt-cell is-link>
+            <div slot='title' class="myTitle" style="">
+              <svg class="icon" aria-hidden="true" slot='icon'>
+                <use xlink:href="#icon-yinhangqia"></use>
+              </svg>
+              <div class="titletext">信用卡提额</div>
+            </div>
+          </mt-cell>
+        </div>
       </div>
       <div class="mineModule">
-        <mt-cell is-link>
-          <div slot='title' class="myTitle" style="">
-            <svg class="icon" aria-hidden="true" slot='icon'>
-              <use xlink:href="#icon-bangzhu"></use>
-            </svg>
-            <div class="titletext">帮助与反馈</div>
-          </div>
-        </mt-cell>
+        <div @click='goNull'>
+          <mt-cell is-link>
+            <div slot='title' class="myTitle" style="">
+              <svg class="icon" aria-hidden="true" slot='icon'>
+                <use xlink:href="#icon-bangzhu"></use>
+              </svg>
+              <div class="titletext">帮助与反馈</div>
+            </div>
+          </mt-cell>
+        </div>
         <!-- <div class="lineStyle"></div> -->
-        <mt-cell is-link>
-          <div slot='title' class="myTitle" style="">
-            <svg class="icon" aria-hidden="true" slot='icon'>
-              <use xlink:href="#icon-shezhi"></use>
-            </svg>
-            <div class="titletext">设置</div>
-          </div>
-        </mt-cell>
+        <div @click="goSetUp()">
+          <mt-cell :is-link="true">
+            <div slot='title' class="myTitle" style="">
+              <svg class="icon" aria-hidden="true" slot='icon'>
+                <use xlink:href="#icon-shezhi"></use>
+              </svg>
+              <div class="titletext">设置</div>
+            </div>
+          </mt-cell>
+        </div>
       </div>
     </div>
   </div>
@@ -84,20 +97,34 @@
 export default {
   data() {
     return {
-
+      imgUrl: './static/image/mImg.jpg',
+      Name: '请完善个人信息'
     }
   },
   props: {
 
   },
   created() {
-
+    // let hostory = window.localStorage;
+    // var val = hostory.getItem(data);
+    let url = this.util.changeStory('url');
+    let Name = this.util.changeStory('Name');
+    this.imgUrl = (url == '') ? this.imgUrl : url;
+    this.Name = (Name == null) ? this.Name : Name;
   },
   methods: {
+    goNull() {
+      this.$router.push({ path: '/NullPage' })
+    },
+    goSetUp() {
+      // console.log("5555")
+      this.$router.push({ path: '/setUp' })
+    },
     selectPersonalpage() {
-      // this.$refs.personalpage.show()
+      this.$router.push({ path: '/personInfo' })
     },
     selectLogin() {
+
       // this.$refs.login.show()
     }
   },
@@ -143,6 +170,7 @@ export default {
 
 .my_header {
   display: flex;
+  width: 100%;
 }
 
 .my_header .user_img {
@@ -158,16 +186,20 @@ export default {
 }
 
 .my_header .des {
-  flex: 1;
+  // display: flex;
+  // flex: 1;
   padding-left: 20px;
+  line-height: 50px;
+  width: 100%;
   /*background: url('./right2.png') 92% center no-repeat;*/
 }
 
-.my_header .des p {
+.my_header .des .user_name {
   font-size: 18px;
-  line-height: 20px;
+  line-height: 50px;
   font-weight: 500;
   color: #000;
+  float: left;
 }
 
 .my_header .des .user_work {
@@ -178,7 +210,9 @@ export default {
 
 .mine {
   .rightFlag {
+    // padding-left: 200px;
     margin-right: 20px;
+    float: right;
   }
   display: flex;
   width: 100%;

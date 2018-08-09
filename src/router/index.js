@@ -7,75 +7,109 @@ import mine from '@/components/page/mine'
 import showAllCards from '@/components/page/showAllCards'
 import applyCard from '@/components/page/applyCard'
 import login from '@/components/page/login'
+import newsDatil from '@/components/page/newsDatil'
+import personInfo from '@/components/page/personInfo'
+import uploadImg from '@/components/page/uploadImg'
+import setUp from '@/components/page/setUp'
+import NullPage from '@/components/page/404'
 Vue.use(Router)
 
 
 let router = new Router({
   routes: [{
-    path: '/login',
-    name: 'login',
-    component: login,
-  }, {
-    path: '/',
-    name: 'home',
-    components: {
-      default: home,
-      tab: tab
+      path: '/login',
+      name: 'login',
+      component: login,
+    }, {
+      path: '/',
+      name: 'home',
+      components: {
+        default: home,
+        tab: tab
+      },
+      meta: {
+        keepAlive: true
+      }
+    }, {
+      path: '/find',
+      name: 'find',
+      components: {
+        default: find,
+        tab: tab
+      },
+      meta: {
+        keepAlive: true
+      }
+    }, {
+      path: '/mine',
+      name: 'mine',
+      components: {
+        default: mine,
+        tab: tab
+      },
+      // meta: {
+      //   keepAlive: true
+      // }
+    }, {
+      path: '/tab',
+      name: 'tab',
+      component: tab,
+      meta: {
+        keepAlive: true
+      }
+    }, {
+      path: '/showAllCards',
+      name: 'showAllCards',
+      component: showAllCards,
     },
-    meta: {
-      keepAlive: true
-    }
-  }, {
-    path: '/find',
-    name: 'find',
-    components: {
-      default: find,
-      tab: tab
+    {
+      path: '/newsDatil',
+      name: 'newsDatil',
+      component: newsDatil,
+    }, {
+      path: '/applyCard',
+      name: 'applyCard',
+      component: applyCard,
     },
-    meta: {
-      keepAlive: true
-    }
-  }, {
-    path: '/mine',
-    name: 'mine',
-    components: {
-      default: mine,
-      tab: tab
+    {
+      path: '/personInfo',
+      name: 'personInfo',
+      component: personInfo,
     },
-    meta: {
-      keepAlive: true
-    }
-  }, {
-    path: '/tab',
-    name: 'tab',
-    component: tab,
-    meta: {
-      keepAlive: true
-    }
-  }, {
-    path: '/showAllCards',
-    name: 'showAllCards',
-    component: showAllCards,
-  }, {
-    path: '/applyCard',
-    name: 'applyCard',
-    component: applyCard,
-  }]
+    {
+      path: '/uploadImg',
+      name: 'uploadImg',
+      component: uploadImg,
+    },
+    {
+      path: '/setUp',
+      name: 'setUp',
+      component: setUp,
+    },
+    {
+      path: '/NullPage',
+      name: 'NullPage',
+      component: NullPage,
+    },
+  ]
 })
-// router.beforeEach((to, from, next) => {
-//   // console.log('to:' + to.path)
-//   if (to.path.startsWith('/login')) {
-//     window.sessionStorage.removeItem('access-user')
-//     next()
-//   } else {
-//     let user = JSON.parse(window.sessionStorage.getItem('access-user'))
-//     if (!user) {
-//       next({
-//         path: '/login'
-//       })
-//     } else {
-//       next()
-//     }
-//   }
-// })
+router.beforeEach((to, from, next) => {
+  // console.log('to:' + to.path)
+  if (to.path.startsWith('/login')) {
+    window.localStorage.clear()
+    next()
+  } else {
+    let user = window.localStorage.getItem('Guid')
+    if (!user) {
+      next({
+        path: '/login'
+      })
+    } else {
+      next()
+    }
+  }
+})
+
+
+
 export default router

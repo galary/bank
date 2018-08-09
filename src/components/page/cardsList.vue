@@ -1,17 +1,16 @@
 <template>
   <div class="goodCards">
     <div class="swiperView">
+      <!-- <div class="hotCardTitle">好卡推荐</div> -->
       <div class="cardsList">
         <div class="cardlistView" v-for="(item,index) in goodCards" :key="index">
-          <div style="display: flex;">
-            <div class="cardImg"><img :src="item.url" alt=""></div>
-            <div class="cardView">
-              <div class="cardName">{{item.cards[0].cardName}}</div>
-              <div class="discount">{{item.cards[0].discount1}}</div>
-              <div class="discount">{{item.cards[0].discount}}</div>
-            </div>
+          <div class="cardImg"><img :src='`${baseUrl}${item.Attachments[0].Url}`' alt=""></div>
+          <div class="cardView">
+            <div class="cardName">{{item.Name}}</div>
+            <!-- <div class="discount">{{item.Type}}</div> -->
+            <div class="discount">{{item.Quota}}</div>
           </div>
-          <div class="applyBtn" @click="applyCard">立即申请</div>
+          <div class="takeBtn" @click='takeCard(item.ApplyAddress,item.Name)'>办卡</div>
         </div>
       </div>
     </div>
@@ -22,21 +21,49 @@ import goodCards from "../../mock/goodCards.json";
 export default {
   data() {
     return {
+      baseUrl: 'http://api.getcard.cn',
       goodCards: [],
+      // BankId: ''
     }
   },
+  props: {
+    msg: String,
+    msg1: String,
+  },
   methods: {
-    applyCard() {
+    getHotCards() {
+      let vm = this;
+      console.log("haha", this.msg)
+      // if(this.)
+      var dataNum = {
+        'pageNo': 0,
+        'pageSize': 100,
+        'BankId': this.msg,
+        'Para': this.msg1,
+      }
+      this.$http.post(`${this.baseUrl}/api/CreditCard/GetCreditCardByBankId`, vm.$qs.stringify(dataNum))
+        .then(function(res) {
+          vm.goodCards = res.data.Data;
+          console.log(res.data);
+        })
+        .catch(function(error) {
+          console.log(error);
+        });
+    },
+    takeCard(url, Name) {
       this.$router.push({
         name: 'applyCard',
         params: {
-          title: "申请信用卡"
+          url: url,
+          Name: Name
         }
       })
     }
   },
   mounted() {
-    this.goodCards = goodCards.links;
+    console.log(this.msg)
+    this.getHotCards()
+    // this.goodCards = goodCards.links;
   }
 };
 
@@ -45,23 +72,26 @@ export default {
 //今日推荐
 .goodCards {
   width: 100%;
+  margin-top: 10px;
   background-color: #fff;
   .cardsList {
+    margin-top: 20px;
     .cardlistView {
       display: flex;
-      align-items: center;
-      justify-content: space-between;
       margin: 0 10px;
       padding: 15px 0;
       border-top: 1px solid #ccc;
-      .applyBtn {
-        padding: 2px;
-        float: right;
-        border: 1px solid red;
+      .takeBtn {
+        padding: 2px 10px;
+        border: 1px solid #2196F3;
         border-radius: 5px;
-        font-size: 0.8em;
+        color: #2196F3;
+        height: 1.8em;
+        font-size: 0.8rem;
+        line-height: 1.8em;
       }
       .cardView {
+        width: 45%;
         margin-left: 15px;
         .cardName {}
         .discount {

@@ -2,13 +2,13 @@
   <div class="goodCards">
     <div class="swiperView">
       <div class="hotCardTitle">好卡推荐</div>
-      <div class="cardsList" >
-        <div class="cardlistView" v-for="(item,index) in goodCards" :key="index">
-          <div class="cardImg"><img :src="item.url" alt=""></div>
+      <div class="cardsList">
+        <div class="cardlistView" v-for="(item,index) in goodCards" :key="index" @click="showCards(item)">
+          <div class="cardImg"><img :src='`${baseUrl}${item.Attachments[0].Url}`' alt=""></div>
           <div class="cardView">
-            <div class="cardName">{{item.cards[0].cardName}}</div>
-            <div class="discount">{{item.cards[0].discount1}}</div>
-            <div class="discount">{{item.cards[0].discount}}</div>
+            <div class="cardName">{{item.Name}}</div>
+            <div class="discount">{{item.Type}}</div>
+            <div class="discount">{{item.Quota}}</div>
           </div>
         </div>
       </div>
@@ -20,14 +20,40 @@ import goodCards from "../../mock/goodCards.json";
 export default {
   data() {
     return {
+      baseUrl: 'http://api.getcard.cn',
       goodCards: [],
     }
   },
   methods: {
-
+    showCards(index) {
+      this.$router.push({
+        name: 'applyCard',
+        params: {
+          url: index.ApplyAddress,
+          Name: index.Name
+        }
+      })
+      console.log(index)
+    },
+    getHotCards() {
+      let vm = this;
+      var dataNum = {
+        'pageNo': 0,
+        'pageSize': 10
+      }
+      this.$http.post(`${this.baseUrl}/api/CreditCard/GetRecommondCreditCard`, vm.$qs.stringify(dataNum))
+        .then(function(res) {
+          vm.goodCards = res.data.Data;
+          console.log(res.data);
+        })
+        .catch(function(error) {
+          console.log(error);
+        });
+    }
   },
   mounted() {
-    this.goodCards = goodCards.links;
+    this.getHotCards()
+    // this.goodCards = goodCards.links;
   }
 };
 

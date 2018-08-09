@@ -3,7 +3,9 @@
     <mt-header :title="title" fixed class="mtHeader">
       <mt-button icon="back" @click="backBtn" slot="left">返回</mt-button>
     </mt-header>
-    <div class="flag">内嵌银行申请页面</div>
+    <div class="flag">
+      <iframe :src="url" class="innerHtml" scrolling="auto" border="0" frameborder='no'></iframe>
+    </div>
   </div>
 </template>
 <script>
@@ -11,7 +13,8 @@ import Header from "./Header.vue"
 export default {
   data() {
     return {
-      title: ''
+      title: '',
+      url: ''
     }
   },
   components: {
@@ -24,7 +27,8 @@ export default {
   },
   mounted() {
     console.log(this.$route.params)
-    this.title = this.$route.params.title
+    this.title = this.$route.params.Name
+    this.url = this.$route.params.url;
 
   }
 };
@@ -32,13 +36,12 @@ export default {
 </script>
 <style lang="less" scoped>
 .flag {
-  font-size: 30px;
-  width: 140px;
-  height: 100px;
-  line-height: 50px;
-  text-align: center;
-  margin: 120px auto;
-  background-color: #fff;
+  .innerHtml {
+    height: 100vh;
+    width: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
 }
 
 </style>

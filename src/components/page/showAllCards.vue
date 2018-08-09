@@ -4,18 +4,7 @@
       <mt-button icon="back" @click="backBtn" slot="left">返回</mt-button>
     </mt-header>
     <div style="margin-top: 40px;">
-      <div class="describe" v-if="showDescribe">
-        <div class="bankSvg">
-          <svg class="icon" aria-hidden="true">
-            <use :xlink:href="iconId"></use>
-          </svg>
-        </div>
-        <div class="banktext">
-          <p class="">{{title}}</p>
-          <p class="youhui">周三周六美食5折</p>
-        </div>
-      </div>
-      <cardsList></cardsList>
+      <cardsList :msg="BankId" :msg1="Para"></cardsList>
     </div>
   </div>
 </template>
@@ -28,8 +17,11 @@ export default {
     return {
       goodCards: [],
       title: '',
-      iconId: '',
-      showDescribe: false
+      BankId: '',
+      showDescribe: false,
+      pageNo: 0,
+      PageSize: 10,
+      Para: "",
     }
   },
   components: {
@@ -39,19 +31,25 @@ export default {
   methods: {
     backBtn() {
       this.$router.back(-1)
-    }
+    },
+
+
+  },
+  created() {
+    this.title = this.$route.params.title;
+    this.BankId = this.$route.params.BankId;
+    this.Para = this.$route.params.Para;
+    console.log("银行", this.BankId, "搜索", this.Para)
   },
   mounted() {
 
-    this.title = this.$route.params.title;
-    this.iconId = this.$route.params.icon;
-    console.log(this.$route.params.icon);
-    this.goodCards = goodCards.links;
-    if (this.iconId == '' || this.iconId == undefined) {
-      this.showDescribe = false;
-    } else {
-      this.showDescribe = true;
-    }
+    // this.iconId = this.$route.params.icon;
+    // this.goodCards = goodCards.links;
+    // if (this.iconId == '' || this.iconId == undefined) {
+    //   this.showDescribe = false;
+    // } else {
+    //   this.showDescribe = true;
+    // }
   }
 };
 

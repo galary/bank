@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+</head>
+
+<body>
+  <div id="testAjax">点击</div>
+  <script>
+  //按钮单击时执行
+  $("#testAjax").click(function() {
+    console.log('dianji')
+    var data1 = {
+      'pageNo': 0,
+      'pageSize': 10
+    }
+    $.ajax({
+      type: "POST",
+      url: "http://api.getcard.cn/api/Bank/GetRecommondBankList",
+      // contentType: "application/x-www-form-urlencoded",
+      data: {
+        'pageNo': 0,
+        'pageSize': 10
+      },
+      success: function(data) {
+        console.log(data)
+      }
+    });
+  });
+
+  </script>
+</body>
+
+</html>
