@@ -10,7 +10,7 @@
         </div>
         <div id="container">
           <div class='yazhengView' v-if='showYz'>
-            <mt-field placeholder="请输入手机号" autoconplete='off' type="tel" v-model="phone" class="inputStyle"></mt-field>
+            <mt-field placeholder="请输入手机号" :state='phoneRule' @blur.native.capture="phoneRule1" autoconplete='off' type="tel" v-model="phone" class="inputStyle"></mt-field>
             <div style="display: flex;">
               <mt-field class="inputStyle yzNum" autoconplete='off' placeholder="请输入验证码" type="text" v-model="Verification"></mt-field>
               <div class="submitzy" @click='sendMessage' v-if='showFlag'>发送验证码</div>
@@ -44,6 +44,7 @@ import { Toast } from 'mint-ui';
 export default {
   data() {
     return {
+      phoneRule: '',
       type1: "text",
       msgText: '',
       popupVisible: false,
@@ -63,32 +64,54 @@ export default {
       console.log(this.type1)
       this.type1 = 'password'
     },
+    phoneRule1() {
+      if (this.phone == '') {
+        this.phoneRule = 'error'
+      } else {
+        var myreg = /^[1][3,4,5,7,8][0-9]{9}$/;
+        if (myreg.test(this.phone) == false) {
+          this.phoneRule = 'error'
+        } else {
+          this.phoneRule = ''
+        }
+      }
+
+    },
     //发送验证吗
     sendMessage() { //http://132.232.14.12/api/Values/GetBankList
-      this.$http.post(`${this.baseUrl}/api/MobileAccount/SendMessage?Num=${this.phone}`)
-        .then((res) => {
-          if (res.data.Data == false) {
-            Toast({
-              message: '发送失败',
-              position: 'middle',
-              duration: 2000
-            });
-          } else {
-            const TIME_COUNT = 60; 
-            this.showFlag = false;
-            this.timer = setInterval(() => {       
-              if (this.timeShow > 0 && this.timeShow <= TIME_COUNT) { this.timeShow--; } else {
-                this.showFlag = true;         
-                clearInterval(this.timer);         
-                this.timer = null;        
-              }       
-            }, 1000) 
-          }
-          console.log(res.data);
-        })
-        .catch(function(error) {
-          console.log(error);
+      if (this.phoneRule == '') {
+        this.$http.post(`${this.baseUrl}/api/MobileAccount/SendMessage?Num=${this.phone}`)
+          .then((res) => {
+            if (res.data.Data == false) {
+              Toast({
+                message: '发送失败',
+                position: 'middle',
+                duration: 2000
+              });
+            } else {
+              const TIME_COUNT = 60; 
+              this.showFlag = false;
+              this.timer = setInterval(() => {       
+                if (this.timeShow > 0 && this.timeShow <= TIME_COUNT) { this.timeShow--; } else {
+                  this.showFlag = true;         
+                  clearInterval(this.timer);         
+                  this.timer = null;        
+                }       
+              }, 1000) 
+            }
+            console.log(res.data);
+          })
+          .catch(function(error) {
+            console.log(error);
+          });
+      } else {
+        Toast({
+          message: '请输入正确的手机号',
+          position: 'middle',
+          duration: 2000
         });
+      }
+
     },
     showtag1() {
       this.phone = ''

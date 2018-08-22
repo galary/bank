@@ -35,27 +35,54 @@ export default {
       let vm = this;
       this.avatar.imageClipper(function(data) {
         // const dataUrl = vm.avatar.getDataUrl()
-        let Value = {
-          Userid: vm.Userid,
-          url: data
+        let upData = {
+          Type: "3",
+          dataURL: data
         }
-        vm.popupVisible = true;
-        // alert('裁剪成功，生成的图片已覆盖在上传框内');
-        vm.$http.post(`${vm.baseUrl}/api/MobileAccount/UpdatePhoto`, vm.$qs.stringify(Value))
-          .then(function(res) {
+        vm.$http.post(`${vm.baseUrl}/api/UploadImgs/UploadImageByBase64String`, vm.$qs.stringify(upData))
+          .then((res) => {
             if (res.data.Success == true) {
-              vm.util.changeItem('url', data)
-              vm.popupVisible = false
-              vm.$router.push({ path: '/personInfo' })
-
-              // let hostory = window.localStorage;
-              // let imgUrl = vm.util.changeStory();
-
+              console.log("-----", res.data)
+              let imgUpload = res.data.Data;
+              let Value = {
+                Userid: vm.Userid,
+                url: imgUpload
+              }
+              vm.$http.post(`${vm.baseUrl}/api/MobileAccount/UpdatePhoto`, vm.$qs.stringify(Value))
+                .then(function(res) {
+                  if (res.data.Success == true) {
+                    vm.util.changeItem('url', imgUpload)
+                    vm.popupVisible = false
+                    vm.$router.push({ path: '/personInfo' })
+                    // let hostory = window.localStorage;
+                    // let imgUrl = vm.util.changeStory();
+                  }
+                })
+                .catch(function(error) {
+                  console.log(error);
+                });
+            }
+            if (res.data.Success == true) {
+              console.log(res.data)
+            } else {
+              Toast({
+                message: '头像上传失败',
+                position: 'middle',
+                duration: 2000
+              });
+              return ''
             }
           })
           .catch(function(error) {
             console.log(error);
           });
+
+        // vm.popupVisible = true;
+
+
+
+        // alert('裁剪成功，生成的图片已覆盖在上传框内');
+
         console.log(vm.avatar.getDataUrl());
       })
     },

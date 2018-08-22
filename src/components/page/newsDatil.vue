@@ -3,7 +3,7 @@
     <mt-header fixed class="mtHeader">
       <mt-button icon="back" @click="backBtn" slot="left">返回</mt-button>
     </mt-header>
-    <div style="margin-top: 40px;margin-bottom: 20px;font-weight: 600">{{title}}</div>
+    <div style="margin-top: 40px;margin-bottom: 20px;font-weight: 600;text-align: center;">{{title}}</div>
     <div v-html='newsDatilHtml'>
       <div>{{newsDatilHtml}}</div>
     </div>
@@ -25,8 +25,7 @@ export default {
       dataNum.append('pageNo', 0);
       dataNum.append('pageSize', 10);
       let vm = this;
-      this.$http.post(`${this.baseUrl}/api/Discovery/GetDiscoveryList`, dataNum
-)
+      this.$http.post(`${this.baseUrl}/api/Discovery/GetDiscoveryList`, dataNum)
         .then(function(res) {
           console.log(res.data.Data)
           res.data.Data.map((item) => {
@@ -46,12 +45,15 @@ export default {
 
   },
   created() {
-    this.getNewsList();
-  },
-  mounted() {
     this.title = this.$route.params.title;
     this.Guid = this.$route.params.Guid;
-    console.log(this.Guid)
+    this.newsDatilHtml = this.$route.params.Content
+  },
+  mounted() {
+    // this.title = this.$route.params.title;
+    // this.Guid = this.$route.params.Guid;
+    // this.newsDatilHtml = this.$route.Content
+    // console.log(this.Guid)
   }
 }
 
@@ -60,6 +62,9 @@ export default {
 .newsDatil {
   padding: 10px 20px;
   background-color: #fff;
+  img {
+    width: 100%;
+  }
 }
 
 </style>

@@ -2,7 +2,7 @@
   <div id="my">
     <div class="mine">
       <div class="my_header">
-        <div class="user_img" @click="selectLogin()"><img :src="imgUrl"></div>
+        <div class="user_img" @click="selectLogin()"><img :src="`${this.baseUrl}${this.imgUrl}`"></div>
         <div class="des" @click="selectPersonalpage()">
           <div class="user_name">{{Name}}</div>
           <div class="rightFlag"><i class="icon iconfont icon-arrowright"></i></div>
